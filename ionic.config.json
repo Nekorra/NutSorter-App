@@ -1,0 +1,7 @@
+{
+  "name": "NutSorter",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
