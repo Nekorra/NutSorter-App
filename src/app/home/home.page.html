@@ -6,13 +6,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" scroll-y="false">
 
   <div id="container">
     <ion-button color="{{color}}" expand="block" shape="round" (click)="switch()"><ion-icon name="power-outline"></ion-icon>{{buttonstatus}}</ion-button>
     <br>
     <ion-item>
-      <ion-range [(ngModel)]="speed" min="0" max="100" [pin]="true" (touchend)="updateSpeed()">
+      <ion-range [(ngModel)]="speed" min="0" max="100" [pin]="true" (ionChange)="updateSpeed()">
+        <!-- (touchend)="updateSpeed()"-->
         <ion-icon size="small" slot="start" name="speedometer-outline"></ion-icon>
         <ion-icon slot="end" name="speedometer-outline"></ion-icon>
       </ion-range>

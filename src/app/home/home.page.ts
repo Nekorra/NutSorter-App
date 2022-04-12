@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../services/backend.service';
+import { BluetoothLE } from '@awesome-cordova-plugins/bluetooth-le/ngx';
 
 @Component({
   selector: 'app-home',
@@ -12,12 +13,13 @@ export class HomePage {
   buttonstatus: string = "off";
   speed: any;
 
-  constructor(public backend: BackendService) {}
+  constructor(public backend: BackendService,  private bluetooth: BluetoothLE) {}
 
 
   ngOnInit() {
     this.backend.setData(this.status);
     this.speed = 50;
+    this.bluetooth.initialize();
   }
 
   switch() {
@@ -41,8 +43,10 @@ export class HomePage {
   }
 
   updateSpeed() {
-    this.backend.setSpeed(this.speed);
-    console.log(this.speed)
+    if (this.status == true) {
+      this.backend.setSpeed(this.speed);
+    }
+    
   }
 
 }
