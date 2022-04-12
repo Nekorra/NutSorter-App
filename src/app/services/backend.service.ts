@@ -11,6 +11,10 @@ export class BackendService {
   }
 
   setData(buttonstatus: boolean) {
-    this.firestore.collection('data').doc('data').set({status: buttonstatus});
+    this.firestore.collection('data').doc('data').update({status: buttonstatus});
+  }
+
+  setSpeed(speed: number) {
+    this.firestore.collection('data').doc('data').update({speed: speed});
   }
 }

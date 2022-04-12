@@ -7,15 +7,17 @@ import { BackendService } from '../services/backend.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  status: boolean = false; 
+  status: boolean = false;
   color: string = "danger";
-  buttonstatus: string = "off"
+  buttonstatus: string = "off";
+  speed: any;
 
   constructor(public backend: BackendService) {}
 
 
   ngOnInit() {
     this.backend.setData(this.status);
+    this.speed = 50;
   }
 
   switch() {
@@ -26,6 +28,7 @@ export class HomePage {
         this.color = "success"
         this.buttonstatus = "on";
         this.backend.setData(this.status);
+        this.backend.setSpeed(this.speed);
         break;
       case true:
         console.log("off")
@@ -35,6 +38,11 @@ export class HomePage {
         this.backend.setData(this.status);
         break;
     }
+  }
+
+  updateSpeed() {
+    this.backend.setSpeed(this.speed);
+    console.log(this.speed)
   }
 
 }

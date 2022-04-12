@@ -1,19 +1,21 @@
-<ion-header [translucent]="true">
+<ion-header collapse="condense" [translucent]="true">
   <ion-toolbar>
-    <ion-title>
+    <ion-title size="large">
       Nut Sorter
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
   <div id="container">
     <ion-button color="{{color}}" expand="block" shape="round" (click)="switch()"><ion-icon name="power-outline"></ion-icon>{{buttonstatus}}</ion-button>
+    <br>
+    <ion-item>
+      <ion-range [(ngModel)]="speed" min="0" max="100" [pin]="true" (touchend)="updateSpeed()">
+        <ion-icon size="small" slot="start" name="speedometer-outline"></ion-icon>
+        <ion-icon slot="end" name="speedometer-outline"></ion-icon>
+      </ion-range>
+    </ion-item>
   </div>
 </ion-content>
